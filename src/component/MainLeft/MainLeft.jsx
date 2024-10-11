@@ -13,7 +13,7 @@ function MainLeft({people ,onPersonClick}) { // is line mai jo yeh people hai ye
     const dropdownItems = ['Publish', 'Draft', 'Archieve' , "Scheduled"];
   return (
     <div>
-        <div>
+        <div className='pb-16'>
             <div className='py-3 flex justify-between items-center px-7'>
                 <p className='text-gray-600 font-serif text-[19px]'>Change Logs</p>
                 <div className='px-3 py-1 bg-slate-300 rounded-lg cursor-pointer relative inline-block  hover:bg-gray-400' onClick={toggleDropdown} >

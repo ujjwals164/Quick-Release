@@ -11,7 +11,7 @@ function MainRight({person}) {
 
   return (
     <div>
-        <div >
+        <div className='pb-15'>
             {/* the first block */}
             <div className='bg-gray-50 border-y-[1px] border-gray-3000'>
                 <div className=' px-10 py-9'>
