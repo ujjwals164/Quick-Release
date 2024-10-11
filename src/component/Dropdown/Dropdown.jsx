@@ -2,7 +2,7 @@
 import React from 'react';
 
 function Dropdown({ isOpen, items, onItemSelect }) {
-  if (!isOpen) return null; // Don't render if dropdown is closed
+  if (!isOpen) return null; 
 
   return (
     <div className="absolute bg-white border border-gray-300 rounded-md shadow-lg mt-2 z-10 w-44">

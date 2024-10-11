@@ -25,10 +25,13 @@ function ChangeLog() {
        </div>
        <div className='flex'>
           <div className='w-[68vh] border-r-[1px] border-gray-300'>
-              <MainLeft people = {cardData} onPersonClick={handlePersonClick}/>
+              <MainLeft people = {cardData} onPersonClick={handlePersonClick}/> 
+              {/* // jo is line mai people hai wo humna props pass kiya hai jo statis data humna import kiya */}
+              
           </div>
-          <div>
+          <div className='w-full'>
             <MainRight person={selectedPerson}/>
+             {/* // jo data humara aya wo humna as a props pass kardiya main right maij */}
           </div>
        </div>
        
