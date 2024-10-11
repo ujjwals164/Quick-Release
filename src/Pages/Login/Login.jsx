@@ -13,7 +13,7 @@ function Login() {
                     <h1 className='font-semibold text-1xl  font-sans text-lg'>Sign in to your account</h1>
                     <div className='flex flex-col mt-4'>
                         <label className='pb-2'>Your Email</label>
-                        <input placeholder='name@company.com' className=' rounded-md p-2 font-light bg-slate-200 border-[1px]  outline-blue-500'/>
+                        <input placeholder='name@company.com' required className=' rounded-md p-2 font-light bg-slate-200 border-[1px]  outline-blue-500'/>
                     </div>
                     <div className='flex flex-col mt-4 '>
                         <label className='pb-2'>Password</label>
