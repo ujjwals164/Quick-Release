@@ -29,7 +29,7 @@ function MainRight({person}) {
             </div>
             {/* the first block */}
             <div>
-                    <div className='bg-gray-50 mx-10 my-8 rounded-xl shadow-sm shadow-slate-300 py-9'>
+                    <div className='bg-gray-50 mx-10 my-8 rounded-xl shadow-sm shadow-slate-300 py-9 cursor-pointer'>
                         <div className='px-9'>
                             <button className='bg-gray-200 px-2  py-[2px] rounded text-[14px] mr-2 font-semibold'>Improvements</button>
                             <button className='bg-red-100 px-2 py-[2px] rounded text-[14px] mr-2 font-semibold text-red-800'>Bug fix</button>
