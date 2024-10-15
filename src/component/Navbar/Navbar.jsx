@@ -17,8 +17,10 @@ function Navbar() {
                 <i class="fa-regular fa-bell mr-4"></i>
                     <img className='w-9 h-9 object-cover rounded-full' src='https://media.istockphoto.com/id/1277971635/photo/portrait-of-a-smiling-man-of-indian-ethnicity.jpg?s=1024x1024&w=is&k=20&c=Ve_FZ5p_gO5Kd3gkW6nVicgiwAi5I0lXcW_L4MGKLEY='/>
                 </div>
+                
             </div>
-            <div className='flex md:hidden'>=</div>
+            
+            
             
         </div>
     </header>

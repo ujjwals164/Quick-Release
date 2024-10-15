@@ -10,6 +10,7 @@ import ChangeLogEmpty from './Pages/ChangeLog/ChangeLogEmpty.jsx';
 import ProfileGeneral from './Pages/Setting/ProfileGeneral.jsx';
 import ProfileLeft from './component/ProfileCreation/ProfileRightCreate.jsx';
 import ProfileRightCreate from './component/ProfileCreation/ProfileRightCreate.jsx';
+import GeneralSetting from './Pages/GeneralSetting/GeneralSetting.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +23,8 @@ function App() {
         <Route path="/change-log/new" element={<ChangeLogNew />} />
         <Route path="/change-log/empty" element={<ChangeLogEmpty />} />
         <Route path="/change-log/setting/general/" element={<ProfileGeneral />} />
-        <Route path="//ProfileRightCreate" element={<ProfileRightCreate />} />
+        
+        <Route path="/change-log/general-setting" element={<GeneralSetting />} />
         <Route path="/" element={<Home />} /> {/* Assuming you have a Home component */}
         
       </Routes>
