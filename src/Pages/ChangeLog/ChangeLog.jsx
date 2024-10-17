@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 function ChangeLog() {
   const [selectedPerson, setSelectedPerson] = useState(null);
+  const [ open ,setOpen] = useState(false)
+  
   const navigate = useNavigate()
   
   const handlePersonClick = (person) => {
@@ -17,6 +19,11 @@ function ChangeLog() {
      navigate('/change-log/new')
   }
 
+  const handleModelChange = ()=>{
+    setOpen(false)
+    setSelectedPerson(null)
+  }
+ 
   return (
     <>
       
@@ -33,16 +40,34 @@ function ChangeLog() {
       </div>
 
       
-      <div className='flex  mt-[75px] '> 
-        <div className='w-[400px] border-r-[1px] border-gray-300 overflow-y-auto fixed h-full '>
+      <div className='mt-[75px]'> 
+        <div className='w-[400px] border-r-[1px] border-gray-300 overflow-y-auto fixed h-full hidden lg:flex'>
           <MainLeft people={cardData} onPersonClick={handlePersonClick} />
         </div>
 
+        {/* responsive code */}
+        
+        <div className="mt-3 px-5 bg-gray-100 fixed top-28 inset-0 h-full overflow-y-auto border rounded lg:hidden ">
+             <MainLeft people={cardData} onPersonClick={handlePersonClick} onClick={()=> setOpen(true)} />
+        </div>
+              
+        
+
        
-        <div className='ml-[400px] fixed overflow-y-auto h-full w-[161vh] pb-96'>
+        <div className='ml-[400px] fixed overflow-y-auto h-full pb-96 hidden lg:flex'>
           <MainRight person={selectedPerson} />
         </div>
+        <div className=' flex lg:hidden'>
+         <MainRight open={open} person={selectedPerson} onClose={handleModelChange} />
       </div>
+
+      </div>
+      
+
+      
+      
+           
+     
     </>
   );
 }

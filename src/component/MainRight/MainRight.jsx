@@ -1,6 +1,13 @@
 import React from 'react';
+import { useMediaQuery } from '@uidotdev/usehooks';
 
-function MainRight({person}) {
+
+function MainRight({person , onClose }) {
+    
+    const isSmallDevice = useMediaQuery('only screen and (max-width: 768px)');
+    const isMediumDevice = useMediaQuery('only screen and (min-width: 769px) and (max-width: 992px)');
+    const isLargeDevice = useMediaQuery('only screen and (min-width: 993px) and (max-width: 1200px)');
+    const isExtraLargeDevice = useMediaQuery('only screen and (min-width: 1201px)');
   if (!person) {
     return (
       <div className="w-3/4 p-4">
@@ -9,16 +16,29 @@ function MainRight({person}) {
     );
   }
 
+
+  let clasname = ''
+    if(isSmallDevice || isMediumDevice){
+        clasname='w-full h-screen fixed top-32 pb-36 left-0 bg-gray-200 overflow-y-auto'
+    }
+    if(isLargeDevice || isExtraLargeDevice){
+         clasname='pb-36'
+    }
+   
+
   return (
     <div>
-        <div className='pb-15'>
+        <div className={` ${clasname}`}>
             {/* the first block */}
             <div className='bg-gray-50 border-y-[1px] border-gray-3000'>
-                <div className=' px-10 py-9'>
+                <div className=' px-10 py-4' >
+                    <div className='flex lg:hidden mb-2 text-[30px]' >
+                       <i class="fa-solid fa-left-long" onClick={onClose} ></i>
+                    </div>
                     <div className='flex justify-between items-center '>
                         <div>
-                        <p className='text-2xl'>{person.title}</p>
-                        <i class="bi bi-arrow-up-right"></i>
+                           <p className='text-2xl'>{person.title}</p>
+                           <i class="bi bi-arrow-up-right"></i>
                         </div>
                         
                         <i class="fa-solid fa-ellipsis-vertical text-[23px] text-gray-500"></i>
@@ -28,7 +48,7 @@ function MainRight({person}) {
 
             </div>
             {/* the first block */}
-            <div>
+            <div >
                     <div className='bg-gray-50 mx-10 my-8 rounded-xl shadow-sm shadow-slate-300 py-9 cursor-pointer'>
                         <div className='px-9'>
                             <button className='bg-gray-200 px-2  py-[2px] rounded text-[14px] mr-2 font-semibold'>Improvements</button>
