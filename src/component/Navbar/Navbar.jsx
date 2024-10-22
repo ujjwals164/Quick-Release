@@ -4,7 +4,7 @@ import { useState } from 'react';
 import AdminProfileDropdown from '../Dropdown/AdminProfileDropdown';
 import { useMediaQuery } from '@uidotdev/usehooks';
 
-function Navbar() {
+function Navbar({handleSignOut}) {
     const [isOpen, setIsOpen] = useState(false);
     const [ drop , setDrop] = useState(false)
     const isSmallDevice = useMediaQuery('only screen and (max-width: 768px)');
@@ -69,7 +69,7 @@ function Navbar() {
                                             <p  className='text-black text-[14px] ml-2'>Profile</p>
                                             <div className='flex lg:hidden'>
 
-                                              {drop && <AdminProfileDropdown dropdownPosition={clasname} />}
+                                              {drop && <AdminProfileDropdown dropdownPosition={clasname}  />}
                                             </div>
                                     </div>
                                 </div>

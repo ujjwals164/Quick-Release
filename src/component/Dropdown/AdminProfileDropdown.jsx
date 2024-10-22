@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -29,9 +30,9 @@ function AdminProfileDropdown({dropdownPosition}) {
             </div>
             <hr className='text-gray-400'></hr>
             <div className='px-4 my-2 text-[14px] font-normal cursor-pointer'>
-                <p className='mt-2 hover:text-gray-600'>Account Setting</p>
-                <p className='mt-2 hover:text-gray-600'>Profile Setting</p>
                 <p className='mt-2 hover:text-gray-600'>Team Setting</p>
+                <p className='mt-2 hover:text-gray-600'><Link to="/change-log/setting/profile-setting">Profile Setting</Link></p>
+                <p className='mt-2 hover:text-gray-600'><Link to="/change-log/setting/account-setting">Account Setting</Link></p>
             </div>
             <hr className='text-gray-400'></hr>
             <div className='px-4 my-2 cursor-pointer hover:text-gray-600'>

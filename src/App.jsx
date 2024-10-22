@@ -8,25 +8,33 @@ import ChangeLog from './Pages/ChangeLog/ChangeLog.jsx';
 import ChangeLogNew from './Pages/ChangeLog/ChangeLogNew.jsx';
 import ChangeLogEmpty from './Pages/ChangeLog/ChangeLogEmpty.jsx';
 import ProfileGeneral from './Pages/Setting/ProfileGeneral.jsx';
-import ProfileLeft from './component/ProfileCreation/ProfileRightCreate.jsx';
-import ProfileRightCreate from './component/ProfileCreation/ProfileRightCreate.jsx';
 import GeneralSetting from './Pages/GeneralSetting/GeneralSetting.jsx';
 import ChangeLogList from './Pages/ChangeLogList/ChangeLogList.jsx';
+import { useState } from 'react';
+import Form from './component/Form/Form.jsx';
+
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />}/>
+            
+        
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/change-log" element={<ChangeLog />} />
+        <Route path="/change-log" element={<ChangeLog isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />} />
+          
+      
         <Route path="/change-log/new" element={<ChangeLogNew />} />
         <Route path="/change-log/empty" element={<ChangeLogEmpty />} />
-        <Route path="/change-log/setting/general/" element={<ProfileGeneral />} />
+        <Route path="/change-log/setting/profile-setting" element={<ProfileGeneral />} />
+        <Route path="/change-log/setting/account-setting" element={<GeneralSetting />} />
         <Route path="/change-log/changeLogList" element={<ChangeLogList/>} />
+        <Route path='/form' element={<Form/>}/>
         {/* <Route path='/change-log/setting/general/create' element={<ProfileRightCreate/>}/> */}
-        <Route path="/change-log/general-setting" element={<GeneralSetting />} />
+       
         <Route path="/" element={<Home />} /> {/* Assuming you have a Home component */}
         
       </Routes>

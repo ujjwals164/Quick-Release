@@ -4,7 +4,7 @@ import GeneralSettingRight from '../../component/GeneralSettingRight/GeneralSett
 import Navbar from '../../component/Navbar/Navbar'
 
 function GeneralSetting() {
-    const [change , setChange] = useState(null)
+    const [change , setChange] = useState(true)
     const [tagchange , setTagChange] = useState(null)
     const handleGeneralChange = (option)=>{
         setTagChange(null)
@@ -14,6 +14,7 @@ function GeneralSetting() {
         setChange(null)
         setTagChange(option)
     }
+    const leftValue = ["General" , "Tags"];
   return (
     <div>
     
@@ -23,7 +24,7 @@ function GeneralSetting() {
                 <div className=' h-full'>
                         <div className='flex bg-white '>
                             <div className='w-[200px]  fixed top-24 left-48  '>
-                             <GeneralSettingLeft generalSet={handleGeneralChange} tagSet= {handleTagChange} />
+                             <GeneralSettingLeft generalSet={handleGeneralChange} tagSet= {handleTagChange} onGeneralActive={change} onTagActive={tagchange} value={leftValue}/>
                             </div>
                             <div className='fixed top-24 left-[65vh] h-full w-[70vh] pl-8'>
                              <GeneralSettingRight value={change} data={tagchange}/>

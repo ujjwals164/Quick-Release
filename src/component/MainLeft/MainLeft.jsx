@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useEffect }  from 'react'
 import { useState } from 'react';
 import Dropdown from '../Dropdown/Dropdown.jsx';
+import { useSelector } from 'react-redux';
+import { setSelectedPerson } from '../../Pages/ChangeLog/ChangeLogSlice.js';
+import { useDispatch } from 'react-redux';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-function MainLeft({people ,onPersonClick}) { // is line mai jo yeh people hai yeh props hai jo pass hua  jo change logs log sa pass hua
- 
-    const [isOpen, setIsOpen] = useState(false);  // state for toggling the dropdown
+
+
+
+function MainLeft({people }) { // is line mai jo yeh people hai yeh props hai jo pass hua  jo change logs log sa pass hua
+  const [isOpen, setIsOpen] = useState(false);  // state for toggling the dropdown
   
+    const dispatch = useDispatch()
+    const onPersonClick = (items)=>{ 
+        dispatch(setSelectedPerson(items))
+    }
+    
     const toggleDropdown = () => {
       setIsOpen((prev) => !prev); // for togling the dropdown
     };
+
+    
+    // useEffect(()=>{
+
+    // },[selectedPerson])
   
     const dropdownItems = ['Publish', 'Draft', 'Archieve' , "Scheduled"];
   return (
@@ -24,12 +40,12 @@ function MainLeft({people ,onPersonClick}) { // is line mai jo yeh people hai ye
 
             </div>
             <div className='grid grid-cols-1 '>
-                {people.map((card)=>(
+                {people.map((datas)=>(
                         
-                   <div key={card.id} className=' bg-white text-black pl-8 pr-11 py-4 border-b-[1px] border-gray-3000 cursor-pointer hover:bg-gray-100 px-3' onClick={() => onPersonClick(card)} >
-                      <p className='mb-1 text-[16px]' >{card.title}</p>
-                      <p className='mb-1 text-gray-500 text-[12px]' >{card.createdBy}</p>
-                      <p className='text-gray-600 text-[13px] font-normal mt-3'>{card.description.slice(1,80) + "....."}</p>
+                   <div key={datas.id} className=' bg-white text-black pl-8 pr-11 py-4 border-b-[1px] border-gray-3000 cursor-pointer hover:bg-gray-100 px-3' onClick={() => onPersonClick(datas)} >
+                      <p className='mb-1 text-[16px]' >{datas.title}</p>
+                      <p className='mb-1 text-gray-500 text-[12px]' >{datas.name}</p>
+                      <p className='text-gray-600 text-[13px] font-normal mt-3'>{datas.description.slice(1,80) + "....."}</p>
 
                    </div>
 

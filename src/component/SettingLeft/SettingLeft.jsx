@@ -1,34 +1,33 @@
-import React from 'react'
+import React from 'react';
 
-
-function SettingLeft({onProfile , onPassword ,emailPref}) {
-    
-  return (
-    <div>
-        
-            
-            <div>
-                <div className='flex items-center bg-gray-400 px-2 py-1 rounded-md mb-2 cursor-pointer hover:bg-gray-300' onClick={onProfile} >
-                  <span className='mr-2 text-[20px]'><i class="fa-regular fa-address-card"></i></span>
-                  <p className='text-[14px] font-medium' >Profile</p>
+function SettingLeft({ onProfile, onPassword, emailPref, value ,profileActive , passwordActive , emailActive} ) {
+    return (
+        <div>
+            {value.map((item, index) => (
+                <div 
+                    key={index} 
+                    className={`flex items-center  px-2 py-1 rounded-md mb-2 cursor-pointer hover:bg-gray-300
+                               ${item === "Profile" && profileActive ? 'bg-gray-300' : 
+                                item === "Change Password" && passwordActive ? 'bg-gray-300' : 
+                                item === "Email Preferences" && emailActive ? 'bg-gray-300' : 
+                                'hover:border-r-gray-100'}`} 
+                    onClick={() => {
+                        
+                        if (item === "Profile") {
+                            onProfile() 
+                            
+                        } else if (item === "Change Password") {
+                            onPassword() 
+                        } else {
+                            emailPref() && emailActive ? 'bg-gray-300' : 'hover:bg-gray-100';
+                        }
+                    }}
+                >
+                    <p className='text-[14px] font-medium'>{item}</p>
                 </div>
-                <div className='flex items-center   px-2 py-1 rounded-md mb-2 cursor-pointer hover:bg-gray-200' onClick={onPassword}  >
-                    <span className='mr-2 text-[20px]'><i class="fa-solid fa-lock"></i></span>
-                    <p className='text-[14px] font-medium'>Change Password</p>
-                </div>
-                <div className='flex items-center   px-2 py-1 rounded-md mb-2 cursor-pointer hover:bg-gray-200' onClick={emailPref}>
-                    <span className='mr-2 text-[20px]'><i class="fa-regular fa-address-card"></i></span>
-                    <p className='text-[14px] font-medium'>Email Preferences</p>
-                </div>
-            </div>
-            
-            
-        
-    </div>
-  )
+            ))}
+        </div>
+    );
 }
 
-export default SettingLeft
-
-
-
+export default SettingLeft;

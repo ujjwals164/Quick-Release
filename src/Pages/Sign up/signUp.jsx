@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 function signUp() {
+    const navigate = useNavigate()
     const [name , setName] = useState({
         firstN:'',
         lastN:'',
@@ -25,6 +27,18 @@ function signUp() {
     }
     const handleChange = (e)=>{
         e.preventDefault();
+        
+        
+        const userData = {
+            firstN: name.firstN,
+            lastN: name.lastN,
+            email: name.email,
+            orgName: name.orgName,
+            password: name.password
+        };
+        console.log('User data before saving:', userData); 
+        localStorage.setItem('user', JSON.stringify(userData));
+        navigate('/login')
     
    
       const newErrors = {
@@ -38,6 +52,7 @@ function signUp() {
       setError(newErrors)
      
     };
+   
         
     
   return (
@@ -47,38 +62,38 @@ function signUp() {
     <div className="flex items-center flex-col mt-16 mb-10">
         <h2 className='font-medium text-2xl font-mono'>Quick Release</h2>
         <div className='bg-white mt-4  p-6  items-center rounded-lg'>
-            <div className='w-auto '>
+            <div className='w-auto ' >
                     <h1 className='font-semibold text-1xl  font-sans text-lg'>Create your account</h1>
                     <div className='flex mt-5'>
                         <div className='mr-4'>
                             <label className='pb-2 flex'>First Name</label>
-                            <input placeholder='First Name' value={name.firstN} onChange={(e)=> setName({firstN:e.target.value})} className=' rounded-md p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
+                            <input placeholder='First Name' value={name.firstN} onChange={(e)=> setName({...name , firstN:e.target.value})} className=' rounded-md p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
                             {error.firstN && <p className='text-red-500 text-[12px]'>This Feild is required</p>}
                         </div>
                         <div>
                             <label className='pb-2 flex'>Last Name</label>
-                            <input placeholder='Last Name' value={name.lastN} onChange={(e)=> setName({lastN:e.target.value})}  className=' rounded-md p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
+                            <input placeholder='Last Name' value={name.lastN} onChange={(e)=> setName({...name , lastN:e.target.value})}  className=' rounded-md p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
                             {error.lastN && <p className='text-red-500 text-[12px]'>This Feild is required</p>}
                         </div>
                     </div>
                     <div className='flex flex-col mt-4'>
                         <label className='pb-2'>Your Email</label>
-                        <input placeholder='name@company.com'  value={name.email} onChange={(e)=> setName({email:e.target.value})} className=' rounded-md p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
+                        <input placeholder='name@company.com'  value={name.email} onChange={(e)=> setName({...name , email:e.target.value})} className=' rounded-md p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
                         {error.email && <p className='text-red-500 text-[12px]'>This Feild is required</p>}
                     </div>
                     <div className='flex flex-col mt-4 '>
                         <label className='pb-2'>Organisation Name</label>
-                        <input placeholder="Company Name" value={name.orgName} onChange={(e)=> setName({orgName:e.target.value})}  className=' rounded-lg p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
+                        <input placeholder="Company Name" value={name.orgName} onChange={(e)=> setName({...name , orgName:e.target.value})}  className=' rounded-lg p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
                         {error.orgName && <p className='text-red-500 text-[12px]'>This Feild is required</p>}
                     </div>
                     <div className='flex flex-col mt-4'>
                         <label className='pb-2'>New Password</label>
-                        <input placeholder='******' value={name.password} onChange={(e)=> setName({password:e.target.value})}  className=' rounded-md p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
+                        <input placeholder='******' value={name.password} onChange={(e)=> setName({...name , password:e.target.value})}  className=' rounded-md p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
                         {error.password && <p className='text-red-500 text-[12px]'>This Feild is required</p>}
                     </div>
                     <div className='flex flex-col mt-4 '>
                         <label className='pb-2'>Confirm Password</label>
-                        <input placeholder="******" value={name.confPassword} onChange={(e)=> setName({confPassword:e.target.value})}  className=' rounded-lg p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
+                        <input placeholder="******" value={name.confPassword} onChange={(e)=> setName({...name , confPassword:e.target.value})}  className=' rounded-lg p-2 font-light bg-transparent border-[1px]  outline-blue-500'/>
                         {error.confPassword && <p className='text-red-500 text-[12px]'>This Feild is required</p>}
                     </div>
                     <div className='mt-5 flex justify-between'>
@@ -89,7 +104,7 @@ function signUp() {
                         </div>
                         
                     </div>
-                    {checkBox ? (<button onClick ={handleChange} className='mt-5 bg-blue-600 rounded-lg text-white pt-2 pb-2 w-96'>Create An Account</button>) : ( <button className='mt-5 bg-gray-400 rounded-lg text-white pt-2 pb-2 w-96'>Create an Account</button>
+                    {checkBox ? (<button onClick ={handleChange}  className='mt-5 bg-blue-600 rounded-lg text-white pt-2 pb-2 w-96'>Create An Account</button>) : ( <button className='mt-5 bg-gray-400 rounded-lg text-white pt-2 pb-2 w-96'>Create an Account</button>
                       )}
                    
                     <div className='mt-5 text-sm'>

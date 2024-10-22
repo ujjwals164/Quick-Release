@@ -1,19 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-function GeneralSettingLeft({generalSet,tagSet}) {
+function GeneralSettingLeft({ value ,generalSet , tagSet , onGeneralActive , onTagActive }) {
   return (
     <div>
-        <div className='flex cursor-pointer hover:bg-gray-300 px-2 py-2 hover:rounded-md' onClick={generalSet}>
-           <span className='mr-3'><i class="fa-regular fa-address-card"></i></span>
-           <p>General</p>
-        </div>
-        <div className='flex cursor-pointer mt-3 hover:bg-gray-300 px-2 py-2 hover:rounded-md' onClick={tagSet}>
-        <span className='mr-3'><i class="fa-solid fa-lock"></i></span>
-        <p className='text-[16px]'>Tag</p>
-
-        </div>
+      <div>
+        {value.map((values, index) => (
+          <div key={index} className={`flex cursor-pointer hover:bg-gray-300 px-2 py-2 mb-3 hover:rounded-md ${values === 'General' && onGeneralActive ? 'bg-gray-300 rounded-lg': values !== 'General' && onTagActive ? 'bg-gray-300 rounded-lg': 'hover:bg-gray-300'}`}  onClick={ (values === 'General' ? generalSet : tagSet)}>
+            <p>{values}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default GeneralSettingLeft
+export default GeneralSettingLeft;
