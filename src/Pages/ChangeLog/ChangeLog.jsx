@@ -54,13 +54,7 @@ function ChangeLog({isAuthenticated  ,setIsAuthenticated}) {
 //    response();
 //  },[])
 
- 
- 
 
-
-
-  
-  
   
   const handlePersonClick = () => {
     dispatch(setOpen(true))

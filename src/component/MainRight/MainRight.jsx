@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 function MainRight({ onClose }) {
     const selected = useSelector((state) => state.changeLog.selectedPerson);
+    // const users = useSelector((state)=> state.apiHandle.users )
     
     const isSmallDevice = useMediaQuery('only screen and (max-width: 768px)');
     const isMediumDevice = useMediaQuery('only screen and (min-width: 769px) and (max-width: 992px)');
@@ -37,7 +38,7 @@ function MainRight({ onClose }) {
                         </div>
                         <div className='flex justify-between items-center'>
                             <div>
-                                <p className='text-2xl'>{selected.title}</p>
+                                <p className='text-2xl'>{selected.name}</p>
                                 <i className="bi bi-arrow-up-right"></i>
                             </div>
                             <i className="fa-solid fa-ellipsis-vertical text-[23px] text-gray-500"></i>
@@ -57,13 +58,13 @@ function MainRight({ onClose }) {
                             <button className='bg-blue-100 px-2 py-[2px] rounded text-[14px] mr-2 font-semibold text-blue-800'>Maintenance</button>
                         </div>
                         <div className='px-9 mt-3'>
-                                <p className='font-serif'>{selected.description.slice(1,41)}</p>
+                                <p className='font-serif'>{selected?.address?.suite}</p>
                                  <br/>
-                                <p className='font-serif'>{selected.description.slice(41,150)}</p>
+                                <p className='font-serif'>{selected?.address?.zipcode}</p>
                                 <br/>
-                                <p className='font-serif'>{selected.description.slice(100,400)}</p>
+                                <p className='font-serif'>{selected?.address?.city}</p>
                                 <br/>
-                                <p className='font-serif'>{selected.description.slice(400,600)}</p>
+                                <p className='font-serif'>{selected?.address?.geo?.lat}</p>
                         </div>
                     </div>
 
